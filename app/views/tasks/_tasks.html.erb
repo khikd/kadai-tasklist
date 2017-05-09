@@ -1,24 +1,24 @@
 <ul class="media-list">
-  <% tasklists.each do |tasklist| %>
-    <% user = tasklist.user %>
+  <% tasks.each do |tasks| %>
+    <% user = tasks.user %>
     <li class="media">
       <div class="media-left">
-        <img class="media-object img-rounded" src="<%= gravatar_url(tasklist.user, options = { size: 50 }) %>" alt="">
+        <img class="media-object img-rounded" src="<%= gravatar_url(tasks.user, options = { size: 50 }) %>" alt="">
       </div>
       <div class="media-body">
         <div>
-          <%= link_to user.name, user_path(user) %> <span class="text-muted">posted at <%= tasklist.created_at %></span>
+          <%= link_to user.name, user_path(user) %> <span class="text-muted">posted at <%= tasks.created_at %></span>
         </div>
         <div>
-          <p><%= tasklist.content %></p>
+          <p><%= tasks.content %></p>
         </div>
         <div>
-          <% if current_user == tasklist.user %>
-            <%= link_to "Delete", tasklist, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+          <% if current_user == tasks.user %>
+            <%= link_to "Delete",tasks, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
           <% end %>
         </div>
       </div>
     </li>
   <% end %>
-  <%= paginate tasklists %>
+  <%= paginate tasks %>
 </ul>
